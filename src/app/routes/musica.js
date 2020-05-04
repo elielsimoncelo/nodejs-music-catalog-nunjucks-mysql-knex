@@ -46,7 +46,6 @@ router.put('/edit/:id', (req, res, next) => {
     const {id} = req.params;
     
     Musicas().where('id', id).update(req.body).then((result) => {
-        console.log('chegou ' + result);
         if (result === 0) {
             return res.send(400);
         }

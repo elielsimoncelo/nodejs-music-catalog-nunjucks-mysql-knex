@@ -2,7 +2,7 @@
 
 const mysql = require('mysql');
 
-const mysqlTestConnection = (connectioProperties) => {
+const databaseTestConnection = (connectioProperties) => {
     const connection = mysql.createConnection(connectioProperties);
 
     return new Promise((resolve, reject) => {
@@ -10,4 +10,4 @@ const mysqlTestConnection = (connectioProperties) => {
     });
 };
 
-module.exports = mysqlTestConnection;
+module.exports = databaseTestConnection;

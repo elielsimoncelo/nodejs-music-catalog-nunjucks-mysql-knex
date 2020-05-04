@@ -1,5 +1,5 @@
 const knex = require('knex');
-const mysqlTestConnected = require('./mysqlTestConnection');
+const databaseTestConnection = require('./databaseTestConnection');
 
 const connectionProperties = {
     host : 'localhost',
@@ -14,7 +14,7 @@ const db = knex({
 });
 
 const connectionTest = () => {     
-    return mysqlTestConnection(connectionProperties).then(() => true).catch(err => {
+    return databaseTestConnection(connectionProperties).then(() => true).catch(err => {
         console.error(err);
         return false;
     });

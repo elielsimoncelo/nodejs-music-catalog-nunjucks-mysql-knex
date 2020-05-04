@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const methodOverride = require('method-override');
 const expressNunjucks = require('express-nunjucks');
-const indexRouter = require('./routes/musicas');
+const indexRouter = require('./routes/musica');
 
 const app = express();
 
