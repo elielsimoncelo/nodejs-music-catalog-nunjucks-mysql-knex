@@ -1,21 +1,29 @@
+#!/usr/bin/env node
+
 const express = require('express');
 const router = express.Router();
-const db = require('../db/database');
-const Musicas = () => db('musicas')
+const { db, connectionTest } = require('../db/database');
+const Musicas = () => db('musicas');
 
-router.get('/', (req, res, next) => {
+router.get('/status/check', (_req, res, next) => {
+    connectionTest().then(status => {
+        const [ statusCode, statusMessage ] = status ? [ 200, 'OK' ] : [ 400, 'ERROR' ]; 
+        res.status(statusCode).send('Database status: ' + statusMessage);
+    }, next);
+});
+
+router.get('/', (_req, res, next) => {
     Musicas().then((musicas) => {
         res.render('index', { musicas: musicas });
     }, next);
-
 });
 
-router.get('/add', (req, res, next) => {
+router.get('/add', (_req, res, _next) => {
     res.render('add');
 });
 
 router.post('/', (req, res, next) => {
-    Musicas().insert(req.body).then((ids) => {
+    Musicas().insert(req.body).then((_ids) => {
         res.redirect('/');
     }, next);
 });

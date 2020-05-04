@@ -1,13 +1,23 @@
-var knex = require('knex');
+const knex = require('knex');
+const mysqlTestConnected = require('./mysqlTestConnection');
 
-var db = knex({
+const connectionProperties = {
+    host : 'localhost',
+    user : 'root',
+    password : 'd3s3nv',
+    database : 'musica_catalogo'
+};
+
+const db = knex({
     client : 'mysql',
-    connection : {
-        host : 'localhost',
-        user : 'root',
-        password : 'd3s3nv',
-        database : 'musics'
-    }
+    connection : connectionProperties
 });
 
-module.exports = db;
+const connectionTest = () => {     
+    return mysqlTestConnection(connectionProperties).then(() => true).catch(err => {
+        console.error(err);
+        return false;
+    });
+};
+
+module.exports = { db, connectionTest };

@@ -1,6 +1,6 @@
-USE musics;
+USE musica_catalogo;
 
-CREATE TABLE `musics`.`musicas` (
+CREATE TABLE `musica_catalogo`.`musicas` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `nome`VARCHAR(30) NOT NULL,
     `artista` VARCHAR(30) NOT NULL,

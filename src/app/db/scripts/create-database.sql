@@ -1,1 +1,1 @@
-CREATE DATABASE musics;
+CREATE DATABASE musica_catalogo;
