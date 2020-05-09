@@ -12,9 +12,9 @@ router.get('/status/check', (_req, res, next) => {
     }, next);
 });
 
-router.get('/', (_req, res, next) => {
+router.get('/', (req, res, next) => {
     Musicas().then((musicas) => {
-        res.render('index', { musicas: musicas });
+        res.render('index', { musicas: musicas, username: req.session.username });
     }, next);
 });
 
@@ -65,5 +65,6 @@ router.delete('/delete/:id', (req, res, next) => {
         res.redirect('/');
     }, next);
 });
+
 
 module.exports = router;
