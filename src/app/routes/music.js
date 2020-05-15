@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { db, connectionTest } = require('../db/database');
+const { db, connectionTest } = require('../database/db');
 const Musicas = () => db('musicas');
 
 router.get('/status/check', (_req, res, next) => {

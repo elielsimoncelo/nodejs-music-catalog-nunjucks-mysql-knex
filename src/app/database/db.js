@@ -1,5 +1,5 @@
 const knex = require('knex');
-const databaseTestConnection = require('./databaseTestConnection');
+const dbTestConnection = require('./dbTestConnection');
 
 const connectionProperties = {
     host : 'localhost',
